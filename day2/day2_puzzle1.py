@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[72]:
+# In[3]:
 
 
 import os 
@@ -35,8 +35,7 @@ class findAcceptedPasswords():
 
 
     def append_valid(self):
-        dct_passwords = self.input_data
-        for pass_id, values in dct_passwords.items():
+        for pass_id, values in self.input_data.items():
             letter_count = 0
             for char in range(len(values['password'])):
                 if values['password'][char] == values['target']:
@@ -45,15 +44,16 @@ class findAcceptedPasswords():
                     pass
 
             if letter_count >= values['char_range'][0] and letter_count <= values['char_range'][1]:
-                dct_passwords[pass_id]['accepted'] = True
-                self.accepted_passwords[pass_id] = dct_passwords[pass_id]
+                self.input_data[pass_id]['accepted'] = True
+                self.accepted_passwords[pass_id] = self.input_data[pass_id]
             else:
-                dct_passwords[pass_id]['accepted'] = False
+                self.input_data[pass_id]['accepted'] = False
+                
         self.num_accepted = len(self.accepted_passwords)
             
 
 
-# In[73]:
+# In[4]:
 
 
 if __name__ == '__main__':
