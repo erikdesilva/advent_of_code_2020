@@ -30,6 +30,7 @@ class VerifyPassports():
     def check_params(self, pass_dict):
         fields_valid = {}
         for field in self._passport_params.keys():
+
             try:
                 field_val = pass_dict[field]
                 field_params = self._passport_params[field]
@@ -40,10 +41,13 @@ class VerifyPassports():
                     value = int(field_val)
                     fields_valid[field] = (
                         value >= min_val) and (value <= max_val)
+
                 elif field in self._regex_params:
                     fields_valid[field] = bool(match(field_params, field_val))
+
                 elif field == 'ecl':
                     fields_valid[field] = bool(field_val in field_params)
+
                 elif field == 'hgt':
                     try:
                         hgt_tup = findall('([0-9]{2,3})(cm|in)', field_val)[0]
@@ -60,7 +64,7 @@ class VerifyPassports():
                 fields_valid[field] = False
 
         result = (all(fields_valid.values()) == True)
-        
+
         if result == True:
             return 1
         else:
