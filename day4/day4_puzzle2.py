@@ -60,6 +60,7 @@ class VerifyPassports():
                 fields_valid[field] = False
 
         result = (all(fields_valid.values()) == True)
+        
         if result == True:
             return 1
         else:
@@ -70,7 +71,6 @@ class VerifyPassports():
         passport_dict = {}
         for item in tuples:
             passport_dict[item[0]] = item[1]
-
         return passport_dict
 
     def iterate_passports(self):
