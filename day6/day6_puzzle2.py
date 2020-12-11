@@ -17,15 +17,15 @@ class CalcGroupQuestions():
         def count_duplicates(answer):
             joined_answer = ''.join(answer)
             unique_list = []
+            answer_dict = {}
+
             for i in joined_answer:
                 if i not in unique_list:
                     unique_list += [i]
+                    answer_dict[i] = joined_answer.count(i)
                 else:
                     pass
 
-            answer_dict = {}
-            for i in unique_list:
-                answer_dict[i] = joined_answer.count(i)
             answer_dict = {i: j for i, j in answer_dict.items()
                            if j == len(answer)}
             return len(answer_dict)
