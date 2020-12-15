@@ -1,6 +1,5 @@
 import os
 from re import findall, match
-import pandas as pd
 
 cwd = os.getcwd()
 input_txt = os.path.join(cwd, 'input.txt')
